@@ -63,6 +63,22 @@ npm run dev
 
 Visit <http://localhost:3000>. The left panel hosts the todo workflow while the fixed `w-[350px]` sidebar embeds the Copilot chat.
 
+### ⚠️ Hydration Error Notice (Important)
+
+If you see a warning like:
+
+```text
+A tree hydrated but some attributes of the server rendered HTML didn't match the client properties.
+```
+
+**This is not caused by the code.** It happens because some browser extensions inject custom attributes into `<input>` and `<textarea>` elements (e.g., `data-prompt-manager-attached="true"`). These extensions (AI assistants, writing helpers, form enhancers, etc.) modify the DOM before React hydrates, which triggers hydration mismatch errors.
+
+**✅ Recommended Solution:** Run the project in an **Incognito / Private window**. Incognito does not load most extensions, so hydration works correctly.
+
+**Alternative Options:**
+
+- Disable extensions that modify inputs (Grammarly, LanguageTool, AI prompt helpers, etc.)
+- Ignore the warning using `suppressHydrationWarning` (not recommended unless necessary)
 ---
 
 ## Project Tips
